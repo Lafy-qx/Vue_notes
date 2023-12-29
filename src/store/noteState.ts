@@ -1,4 +1,6 @@
 import { createStore } from "vuex";
+import userState from './userState'
+
 import api from "./api";
 
 const noteState = {
@@ -49,6 +51,9 @@ const noteState = {
         const response = await api.get("/notes", {
           params:{
             sort: sort
+          },
+          headers: {
+            Authorization: `Token ${userState.state.token}`
           }
         });
         commit("SET_NOTES", response.data);
