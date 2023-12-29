@@ -10,7 +10,7 @@ const noteState = {
     SET_NOTES(state: any, notes: any) {
       state.notes = notes;
       state.notes.forEach((note: any) => {
-        note.created = new Date();
+        note.created = new Date(note.created);
         note.created = note.created.toLocaleString('ru-RU')
       });
     },
