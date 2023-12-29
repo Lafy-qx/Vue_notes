@@ -1,4 +1,6 @@
 import { createStore } from 'vuex'
+import noteState from './noteState'
+
 
 export default createStore({
   state: {
@@ -8,7 +10,11 @@ export default createStore({
   mutations: {
   },
   actions: {
+    
   },
   modules: {
+    noteState : noteState
   }
 })
+
+

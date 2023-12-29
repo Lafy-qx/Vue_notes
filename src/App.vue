@@ -3,11 +3,31 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
-  <router-view/>
+  <router-view />
 </template>
+<script lang="ts">
+import { defineComponent } from 'vue';
+import axios from 'axios'
+
+export default defineComponent({
+  name: 'App',
+  comments: {
+
+  },
+  async mounted() {
+    // this.data = await axios.get('http://127.0.0.1:8000/api/notes/')
+  },
+  data() {
+    return {
+      // data: '' as any
+    }
+  }
+})
+</script>
+
 
 <style>
-#app {
+body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
