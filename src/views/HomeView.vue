@@ -1,5 +1,10 @@
 <template>
   <div class="home">
+  <div class="filters">
+    <select v-model="sortSelected" @change="sort">
+      <option v-for="option in sortOptions" :value="option.value">{{ option.text }}</option>
+    </select>
+  </div>
     <div class="cards">
       <template v-for="note in notes">
       <div class="card" @click="chooseNote(note)">
@@ -41,7 +46,12 @@ export default defineComponent({
           title: '',
           text: '',
           created: ''
-        }
+        },
+        sortOptions: [
+          {text: 'Сначала старые', value: 'toNew'},
+          {text: 'Сначала новые', value: 'toOld'}
+        ],
+        sortSelected: ''
       }
   },
   methods: {
@@ -68,6 +78,9 @@ export default defineComponent({
       this.formData.text = ''
       this.formData.id =''
       this.formData.created = ''
+    },
+    async sort(){
+      await this.$store.dispatch('fetchAllNotes', this.sortSelected)
     }
   },
 });

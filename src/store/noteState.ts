@@ -44,9 +44,13 @@ const noteState = {
     }
   },
   actions: {
-    async fetchAllNotes({ commit }: any) {
+    async fetchAllNotes({ commit }: any, sort? : string) {
       try {
-        const response = await api.get("/notes");
+        const response = await api.get("/notes", {
+          params:{
+            sort: sort
+          }
+        });
         commit("SET_NOTES", response.data);
       } catch (error) {
         console.log(error);
